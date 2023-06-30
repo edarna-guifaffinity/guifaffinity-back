@@ -19,12 +19,12 @@ describe("/api/memes", () => {
   });
 
   it("endpoint exists", (done) => {
-    request(app).get("/api/memes").expect(200, done);
+    request(app).get("/api/gifs").expect(200, done);
   });
 
   it("returns a list", (done) => {
     request(app)
-      .get("/api/memes")
+      .get("/api/gifs")
       .expect(200)
       .then((response) => {
         expect(response.body).toBeInstanceOf(Array);
@@ -34,7 +34,7 @@ describe("/api/memes", () => {
 
   it("returns a list of 50 memes", (done) => {
     request(app)
-      .get("/api/memes")
+      .get("/api/gifs")
       .expect(200)
       .then((response) => {
         expect(response.body).toHaveLength(50);
