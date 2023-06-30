@@ -63,4 +63,8 @@ describe("/api/memes", () => {
         done();
       });
   });
+
+  it("gif not exists", (done) => {
+    request(app).get("/api/gifs/irrelevantId").expect(404, done);
+  });
 });

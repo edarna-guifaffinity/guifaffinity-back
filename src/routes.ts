@@ -33,6 +33,11 @@ routes.get("/gifs/:idGif", (req, res) => {
   const db = req.context.db;
   const meme = db.get("memes").find({ id: idGif }).value();
 
+  if (meme === undefined) {
+    res.status(404).send();
+    return;
+  }
+
   const user: Gif["user"] = {
     avatar: "",
     name: "",
