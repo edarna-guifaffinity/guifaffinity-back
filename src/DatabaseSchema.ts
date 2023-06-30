@@ -1,7 +1,7 @@
 export interface DatabaseSchema {
   memes: Meme[];
 }
-interface Meme {
+export interface Meme {
   id: string;
   type: string;
   slug: string;
