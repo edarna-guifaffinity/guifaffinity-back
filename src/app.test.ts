@@ -56,7 +56,7 @@ describe("/api/memes", () => {
     };
 
     request(app)
-      .get("api/gifs/YleuWir5NTNVXkflSp")
+      .get("/api/gifs/YleuWir5NTNVXkflSp")
       .expect(200)
       .then((response) => {
         expect(response.body).toEqual(gif);
