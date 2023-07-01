@@ -12,11 +12,12 @@ module.exports = {
 
   // The directory where Jest should output its coverage files
   coverageDirectory: "coverage",
+  
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
     //   "**/__tests__/**/*.[jt]s?(x)",
-    "**/?(*.)+(spec|test).[tj]s?(x)",
+    "**/src/**/?(*.)+(spec|test).[tj]s?(x)",
   ],
 
   // A map from regular expressions to paths to transformers
