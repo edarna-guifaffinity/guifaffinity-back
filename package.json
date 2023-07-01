@@ -16,7 +16,11 @@
     "build:run-babel-node": "babel src -d dist --ignore=\"./src/**/*.spec.ts\" --extensions \".ts\"",
     "test": "jest --colors",
     "test:watch": "jest --watch --colors",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint-staged": "npx lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": ["eslint . --fix", "prettier --write ."]
   },
   "dependencies": {
     "express": "^4.18.2",
