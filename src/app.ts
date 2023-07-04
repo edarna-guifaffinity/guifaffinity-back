@@ -3,7 +3,7 @@ import morgan from "morgan";
 import { routes } from "./routes";
 import { LowdbSync } from "lowdb";
 import { DatabaseSchema } from "./DatabaseSchema";
-
+import cors from "cors";
 export const createApp = (db: LowdbSync<DatabaseSchema>) => {
   const app: Express = express();
   // Shows request log on terminal
@@ -23,6 +23,8 @@ export const createApp = (db: LowdbSync<DatabaseSchema>) => {
   // Parses incoming requests with urlencoded payloads
   // http://expressjs.com/es/api.html#express.urlencoded
   app.use(express.urlencoded({ extended: false }));
+
+  app.use(cors());
 
   app.use("/api", routes);
 
