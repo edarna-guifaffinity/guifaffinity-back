@@ -1,0 +1,9 @@
+{
+  "clearMocks": true,
+  "collectCoverage": true,
+  "coverageDirectory": "coverage",
+  "testMatch": ["**/src/**/?(*.)+(spec|test).[tj]s?(x)"],
+  "transform": {
+    "\\.[jt]sx?$": "babel-jest"
+  }
+}
