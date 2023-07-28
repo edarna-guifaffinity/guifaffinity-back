@@ -5,8 +5,19 @@ import { Gif } from "model/gif.model";
 export const routes = Router();
 
 routes.get("/gifs", (req: Request, res: Response) => {
+  const title: string | undefined = req.query.title?.toString();
   const db = req.context.db;
-  const memes = db.get("memes").take(50).value();
+  let memes;
+
+  if (title === undefined) {
+    memes = db.get("memes").take(50).value();
+  } else {
+    memes = db.get("memes").value();
+    memes = memes.filter((meme) =>
+      meme.title.toLowerCase().includes(title.toLowerCase())
+    );
+  }
+
   const gifs: Gif[] = memes.map((meme) => gifMapper(meme));
 
   res.status(200).json(gifs);

@@ -67,4 +67,34 @@ describe("/api/memes", () => {
   it("gif not exists", (done) => {
     request(app).get("/api/gifs/irrelevantId").expect(404, done);
   });
+
+  it("return a gif by name", (done) => {
+    const gif: Gif = {
+      id: "4Zo41lhzKt6iZ8xff9",
+      src: "https://media4.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif?cid=be655fb7f245f7d29df0fc743b70e3ee884dbaf31956e789&rid=giphy.gif",
+      title: "White Dog GIF",
+      tags: [
+        "#cute",
+        "#dog",
+        "#adorable",
+        "#wiggle",
+        "#pup",
+        "#ears",
+        "#cute animals",
+        "#dog ears",
+      ],
+      user: {
+        avatar: "",
+        name: "",
+      },
+    };
+
+    request(app)
+      .get("/api/gifs?title=dog")
+      .expect(200)
+      .then((response) => {
+        expect(response.body).toContainEqual(gif);
+        done();
+      });
+  });
 });
