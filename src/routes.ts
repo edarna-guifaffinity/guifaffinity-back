@@ -21,7 +21,7 @@ routes.get("/gifs", (req: Request, res: Response) => {
   const gifs: Gif[] = memes.map((meme) => gifMapper(meme));
 
   if (gifs.length === 0) {
-    res.status(404).send();
+    res.status(204).json(error);
     return;
   }
 
@@ -34,7 +34,7 @@ routes.get("/gifs/:idGif", (req, res) => {
   const meme = db.get("memes").find({ id: idGif }).value();
 
   if (meme === undefined) {
-    res.status(404).send();
+    res.status(204).json(error);
     return;
   }
 
@@ -63,3 +63,7 @@ function gifMapper(meme: Meme): Gif {
 
   return gif;
 }
+
+const error = {
+  description: "No results avaliable",
+};
