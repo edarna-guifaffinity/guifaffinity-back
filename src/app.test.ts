@@ -97,4 +97,10 @@ describe("/api/memes", () => {
         done();
       });
   });
+
+  it("search has not results", (done) => {
+    request(app)
+      .get("/api/gifs?title=thistitledonthaveresult")
+      .expect(404, done);
+  });
 });
