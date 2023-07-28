@@ -20,6 +20,11 @@ routes.get("/gifs", (req: Request, res: Response) => {
 
   const gifs: Gif[] = memes.map((meme) => gifMapper(meme));
 
+  if (gifs.length === 0) {
+    res.status(404).send();
+    return;
+  }
+
   res.status(200).json(gifs);
 });
 
