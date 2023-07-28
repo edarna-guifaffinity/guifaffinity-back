@@ -65,5 +65,5 @@ function gifMapper(meme: Meme): Gif {
 }
 
 const error = {
-  description: "No results avaliable",
+  description: "No results available",
 };
